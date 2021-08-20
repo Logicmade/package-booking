@@ -42,12 +42,14 @@ export class BookingAvailability extends Base {
   stopBookingCapacity:number;
 
   @Column()
-  maxPaxToConfirm:number;
+  maxPaxToAutoConfirm:number;
 
   @Column()
-  bookingInterval:number;
+  bookingInterval:number; // 15-> 9:00, 9:15, 9:30 ...
 
-  
+  @Column()
+  maxTableOccupationMinutePerPax:number;
+
 
   @ManyToOne(() => BookingMain, bookingMain => bookingMain.bookingAvailabilty)
   bookingMain: Promise<BookingMain>;

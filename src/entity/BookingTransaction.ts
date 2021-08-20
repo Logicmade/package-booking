@@ -34,8 +34,22 @@ export class BookingTransaction extends Base {
   @Column()
   confirmed:boolean;
 
-  @Column('boolean', {default:false})
-  noShow: boolean = false;
+  @Column()
+  stauts: number; //0 - unconfirmed , 1 - confirmed, 2 - noshow, 3 - cancelled by customer, 4 - cancelled by restaurant , 5 -happened
+
+  @Column()
+  statusRemarks: string; // cancelleation reason, etc
+
+
+  @Column()
+  resourceOfBooking: string; // web, phone, person, inhouse, walkin
+
+  @Column()
+  bookedBy: string; //if an employee made it who is it?
+
+  @Column()
+  layoutMainTableId: string;
+
 
   @ManyToOne(() => BookingMain, bookingMain => bookingMain.bookingTransaction)
   bookingMain: Promise<BookingMain>;

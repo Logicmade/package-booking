@@ -5,18 +5,18 @@ import BookingMainRepository from '../dal/bookingMainRepository';
 import { Like } from 'typeorm';
 
 export default class Booking {
-    private layoutMainRepository: BookingMainRepository;
+    private bookingMainRepository: BookingMainRepository;
     constructor() {
-        this.layoutMainRepository = new BookingMainRepository();
+        this.bookingMainRepository = new BookingMainRepository();
     }
 
-    public async LayoutMainAdd(layout: BookingMain): Promise<ReturnValue> {
+    public async BookingMainSave(layout: BookingMain): Promise<ReturnValue> {
         let result: BookingMain;
         validate(layout).then(errors => {
             return new ReturnValue(false, errors, null, null);
         })
         try {
-            result = await this.layoutMainRepository.create(layout);
+            result = await this.bookingMainRepository.create(layout);
         } catch (error) {
             return new ReturnValue(false, null, error, null);
         }

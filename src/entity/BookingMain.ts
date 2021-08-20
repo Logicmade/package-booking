@@ -20,6 +20,9 @@ export class BookingMain extends Base {
   @Column()
   blackListAfterNoShowCount: number;
 
+  @Column()
+  status: number; // 0 - passive, 1 - active, 2 - suspended
+
   @OneToMany(() => BookingAvailability, bookingAvailability => bookingAvailability.bookingMain)
   bookingAvailabilty: Promise<BookingAvailability[]>;
 
