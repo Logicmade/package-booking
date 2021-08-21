@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { createConnection } from "typeorm";
-import Booking from './business/booking';
+import Booking from './business/bookingModule';
 
 import { BookingMain } from './entity/BookingMain';
 import { BookingAvailability } from './entity/BookingAvailability';

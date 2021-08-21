@@ -33,10 +33,13 @@ export class BookingAvailability extends Base {
   endTime!: Date;
  
   @Column()
-  priority:number;
+  isMaster:boolean;
 
   @Column()
   maxCapacity:number;
+
+  @Column()
+  status:number; // 0 : passive, 1 :active
 
   @Column()
   stopBookingCapacity:number;
@@ -49,7 +52,6 @@ export class BookingAvailability extends Base {
 
   @Column()
   maxTableOccupationMinutePerPax:number;
-
 
   @ManyToOne(() => BookingMain, bookingMain => bookingMain.bookingAvailabilty)
   bookingMain: Promise<BookingMain>;

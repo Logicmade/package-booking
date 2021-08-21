@@ -15,13 +15,21 @@ export class BookingMain extends Base {
 
   @Column()
   @IsNotEmpty()
+  name: string;
+
+  @Column()
+  @IsNotEmpty()
+  description: string;
+
+  @Column()
+  @IsNotEmpty()
   layoutModuleIncluded: boolean;
 
   @Column()
   blackListAfterNoShowCount: number;
 
   @Column()
-  status: number; // 0 - passive, 1 - active, 2 - suspended
+  status: number; // 0 - passive, 1 - suspended, 2 - active
 
   @OneToMany(() => BookingAvailability, bookingAvailability => bookingAvailability.bookingMain)
   bookingAvailabilty: Promise<BookingAvailability[]>;
