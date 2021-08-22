@@ -53,6 +53,6 @@ export class BookingAvailability extends Base {
   @Column()
   maxTableOccupationMinutePerPax:number;
 
-  @ManyToOne(() => BookingMain, bookingMain => bookingMain.bookingAvailabilty)
+  @ManyToOne(() => BookingMain, bookingMain => bookingMain.bookingAvailabilties)
   bookingMain: Promise<BookingMain>;
 }

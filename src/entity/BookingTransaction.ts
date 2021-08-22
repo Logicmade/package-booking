@@ -50,7 +50,7 @@ export class BookingTransaction extends Base {
   @Column()
   layoutMainTableId: string;
 
-  @ManyToOne(() => BookingMain, bookingMain => bookingMain.bookingTransaction)
+  @ManyToOne(() => BookingMain, bookingMain => bookingMain.bookingTransactions)
   bookingMain: Promise<BookingMain>;
 
   @BeforeInsert()

@@ -32,11 +32,11 @@ export class BookingMain extends Base {
   status: number; // 0 - passive, 1 - suspended, 2 - active
 
   @OneToMany(() => BookingAvailability, bookingAvailability => bookingAvailability.bookingMain)
-  bookingAvailabilty: Promise<BookingAvailability[]>;
+  bookingAvailabilties: Promise<BookingAvailability[]>;
 
 
   @OneToMany(() => BookingTransaction, bookingTransaction => bookingTransaction.bookingMain)
-  bookingTransaction: Promise<BookingTransaction[]>;
+  bookingTransactions: Promise<BookingTransaction[]>;
 
   @BeforeInsert()
   beforeInsertActions() {
