@@ -6,8 +6,6 @@ import { BookingMain } from "./BookingMain";
 @Entity()
 export class BookingAvailability extends Base {
 
- 
-
   @Column()
   availabilityName: string;
 

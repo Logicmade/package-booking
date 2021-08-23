@@ -6,9 +6,9 @@ import BookingTransactionRepository from '../dal/bookingTransactionRepository'
 import { Like } from 'typeorm';
 import { BookingTransaction } from '../entity/BookingTransaction';
 import moment from 'moment';
-import { BookingAvailability } from 'entity/BookingAvailability';
-import BookingAvailabilityRepository from 'dal/bookingAvailabilityRepository';
-import { AvailabilityModel } from 'models/AvailabilityModel';
+import { BookingAvailability } from '../entity/BookingAvailability';
+import BookingAvailabilityRepository from '../dal/bookingAvailabilityRepository';
+import { AvailabilityModel } from '../models/AvailabilityModel';
 
 export default class BookingModule {
     private bookingMainRepository: BookingMainRepository;
@@ -81,7 +81,7 @@ export default class BookingModule {
 
     public async IsRestaurantBookable(bookingMain: BookingMain): Promise<boolean> {
         let retVal = false;
-        if (bookingMain.status < 2) {
+        if (bookingMain.status == 2) {
             retVal = true;
         }
         return retVal;
@@ -96,8 +96,10 @@ export default class BookingModule {
             && (k.isMaster == false)
             && (moment(k.validFrom) <= moment(booking.bookingDate))
             && (moment(k.validUntil) >= moment(booking.bookingDate))
-            //  && 
         )
+        if (slaveAvailability){
+
+        }
 
 
 
