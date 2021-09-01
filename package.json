@@ -1,6 +1,6 @@
 {
    "name": "@logicmade/logic-booking",
-   "version": "0.0.2",
+   "version": "0.0.5",
    "description": "Booking related functions",
    "repository": "git@github.com:Logicmade/package-bookinh.git",
    "publishConfig": {
