@@ -1,4 +1,3 @@
-import { validate } from 'class-validator';
 import { BookingMain } from '../entity/BookingMain'
 import ReturnValue from '../models/ReturnValue';
 import BookingMainRepository from '../dal/bookingMainRepository';
@@ -20,9 +19,7 @@ export default class BookingModule {
 
     public async BookingMainSave(bookingMain: BookingMain): Promise<ReturnValue> {
         let result: BookingMain;
-        validate(bookingMain).then(errors => {
-            return new ReturnValue(false, errors, null, null);
-        })
+      
         try {
             if (bookingMain.id) {
                 result = await this.bookingMainRepository.update(bookingMain);
@@ -31,16 +28,16 @@ export default class BookingModule {
             }
         } catch (error) {
             //TODO:log the error
-            return new ReturnValue(false, null, error, null);
+            return new ReturnValue(false, error, null);
         }
-        return new ReturnValue(true, null, null, result);
+        return new ReturnValue(true,  null, result);
     }
     public async BookingMainGet(restaurantId: string): Promise<ReturnValue> {
         const bookingMains = await this.bookingMainRepository.find({ 'restaurantId': restaurantId });
         if (bookingMains) {
-            return new ReturnValue(true, null, null, bookingMains[0]);
+            return new ReturnValue(true,   null, bookingMains[0]);
         } else {
-            return new ReturnValue(false, null, ['No Booking settings found for this restaurant'], null);
+            return new ReturnValue(false,  ['No Booking settings found for this restaurant'], null);
         }
     }
     public async AvailabilityCreate(model: AvailabilityModel): Promise<ReturnValue> {
@@ -48,16 +45,16 @@ export default class BookingModule {
         if (main) {
 
         }
-        return new ReturnValue(false, null, ["Main booking settings not found with thi id"], null);
+        return new ReturnValue(false,  ["Main booking settings not found with thi id"], null);
     }
 
     public async AvailabilitySave(bookingAvailability: BookingAvailability): Promise<ReturnValue> {
         let result: BookingAvailability;
         try {
             result = await this.bookingAvailabilityRepository.update(bookingAvailability);
-            return new ReturnValue(true, null, null, result);
+            return new ReturnValue(true,   null, result);
         } catch (err) {
-            return new ReturnValue(false, null, [err], null);
+            return new ReturnValue(false,  [err], null);
         }
     }
 
@@ -75,7 +72,7 @@ export default class BookingModule {
 
             // check other bookings to see if it's available
         }
-        retVal = new ReturnValue(false, null, ["No booking settings found for given restaurantId"], null);
+        retVal = new ReturnValue(false, ["No booking settings found for given restaurantId"], null);
         return retVal;
     }
 

@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { getConnection, Connection, Repository, DeleteResult } from "typeorm";
-import IBaseRepository from 'dal/interfaces/iBaseRepository'
+import IBaseRepository from './interfaces/iBaseRepository'
 
 
 export abstract class BaseRepository<T> implements IBaseRepository<T> {
