@@ -1,4 +1,3 @@
-import { Min, IsNotEmpty, isEmail } from "class-validator";
 import { Entity, Column, OneToMany, BeforeInsert, ManyToOne, JoinTable } from "typeorm";
 import { Base } from "./Base";
 
@@ -10,7 +9,6 @@ import { BookingMain } from "./BookingMain";
 export class BookingTransaction extends Base {
 
   @Column()
-  @IsNotEmpty()
   name: string;
 
   @Column()
